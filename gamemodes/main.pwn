@@ -18,3 +18,18 @@ public OnGameModeExit()
     print("Game Mode Exiting.");
     return 1;
 }
+
+CMD:cv(playerid, params[])
+{
+    new car, carID, color[2], Float:pos[4];
+
+    if (sscanf(params, "ddd", carID, color[0], color[1])) 
+        SendClientMessage(playerid, 0xFF0000AA, "Uso: /cv <carID> <color1> <color2>");
+    if (!GetPlayerPosition(playerid, pos)) 
+        SendClientMessage(playerid, 0xFF0000AA, "Erro ao obter a posicao do jogador.");
+
+    car = CreateVehicle(carID, pos[0], pos[1], pos[2], pos[3], color[0], color[1], -1, false);
+    PutPlayerInVehicle(playerid, car, 0);
+    SendClientMessage(playerid, -1, "Veiculo criado com sucesso.");
+    return 1;
+}
