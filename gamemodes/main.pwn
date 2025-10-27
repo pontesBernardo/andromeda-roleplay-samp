@@ -33,3 +33,10 @@ CMD:cv(playerid, params[])
     SendClientMessage(playerid, -1, "Veiculo criado com sucesso.");
     return 1;
 }
+
+stock GetPlayerPosition(playerid, Float:pos[4])
+{
+    GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+    GetPlayerFacingAngle(playerid, pos[3]);
+    return 1;
+}
